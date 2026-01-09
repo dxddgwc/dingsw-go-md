@@ -81,10 +81,25 @@ func batch(conf *config.File) {
 	}
 
 	data, _ := json.MarshalIndent(tree, "", "  ")
+	dir := filepath.Dir(JsonOutputPath)
+	EnsureDirectoryExists(dir)
 	err = os.WriteFile(JsonOutputPath, data, 0644)
 	if err != nil {
 		fmt.Printf("保存失败: %v\n", err)
 	} else {
 		fmt.Println("✅ 目录索引已更新: " + JsonOutputPath)
 	}
+}
+
+// 判断目录是否存在，不存在则创建
+func EnsureDirectoryExists(directoryPath string) error {
+	// 判断目录是否存在
+	if _, err := os.Stat(directoryPath); os.IsNotExist(err) {
+		// 目录不存在，创建目录
+		err := os.MkdirAll(directoryPath, os.ModePerm)
+		if err != nil {
+			return fmt.Errorf("error creating directory: %v", err)
+		}
+	}
+	return nil
 }
