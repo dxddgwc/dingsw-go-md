@@ -74,6 +74,13 @@ func Scanner(conf *config.Config) {
 	}
 }
 func batch(conf *config.File) {
+	exists, err := config.FileExists(MdFilePath)
+	if err != nil {
+		panic(err)
+	}
+	if !exists {
+		panic(fmt.Errorf("配置文件 : %s 不存在", MdFilePath))
+	}
 	tree, err := buildTree(MdFilePath)
 	if err != nil {
 		fmt.Printf("扫描失败: %v\n", err)
