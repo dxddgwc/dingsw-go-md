@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  md-server:
+    build: .
+    image: dingsw-go-md:latest
+    container_name: md-server
+    ports:
+      - "8080:8080"
+    volumes:
+      # 将宿主机的配置文件挂载进去，方便修改而无需重新构建镜像
+      - ./etc/conf.yaml:/root/etc/conf.yaml
+      # 挂载你实际存放 Markdown 笔记的目录
+      - /var/www/mystudy:/root/mystudy 
+    restart: always
