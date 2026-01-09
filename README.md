@@ -62,8 +62,8 @@ RateLimit:
 ### 4. 运行
 
 ```bash
-go run main.go
-
+go run main.go scanner all // 扫描所有文件
+go run main.go server s0 // 启动s0服务
 ```
 
 ---
