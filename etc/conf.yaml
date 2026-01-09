@@ -1,12 +1,8 @@
 Files:
   s0:
-    MdPath: /Users/dxd/www/mystudy
+    MdPath: /var/www/mystudy
     JsonPath: ./json/tree0.json
     WebPort: 8101
-  s1:
-    MdPath: /Users/dxd/www/go_www/dingsw_go_study/note
-    JsonPath: ./json/tree1.json
-    WebPort: 8102
 Cache:
     s0:
       addr: 127.0.0.1:6379

@@ -90,11 +90,13 @@ go run main.go server s0 // 启动s0服务
 
 ```
 
----
+# 构建镜像（如果还没构建）
+docker compose build
 
-### 💡 给你的建议：
+# 运行一次性扫描任务
+docker run --rm \
+  -v $(pwd)/etc/conf.yaml:/root/etc/conf.yaml \
+  -v /var/www/mystudy:/root/mystudy \
+  dingsw-go-md:latest ./main scanner all
 
-1. **关于 `tree` 命令**：既然你现在已经有了这个目录结构，你可以把刚才我给你的那个 `find` 模拟命令写成一个别名（Alias），这样以后在 Mac 上输入 `tree` 也能用了：
-* 执行 `nano ~/.zshrc`
-* 在末尾添加：`alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"`
-* 执行 `source ~/.zshrc`
+  docker compose run --rm scanner-job

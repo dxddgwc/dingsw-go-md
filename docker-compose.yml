@@ -1,14 +1,28 @@
-version: '3.8'
 services:
-  md-server:
-    build: .
+  # 1. 扫描任务容器
+  scanner-job:
     image: dingsw-go-md:latest
-    container_name: md-server
-    ports:
-      - "8080:8080"
+    build: .
+    container_name: md-scanner
+    # 传入你的参数
+    command: ["./main", "scanner", "all"]
     volumes:
-      # 将宿主机的配置文件挂载进去，方便修改而无需重新构建镜像
       - ./etc/conf.yaml:/root/etc/conf.yaml
-      # 挂载你实际存放 Markdown 笔记的目录
-      - /var/www/mystudy:/root/mystudy 
+      - /var/www/mystudy:/root/mystudy
+      - ./json:/root/json # 假设扫描结果存放在 json 目录，需要映射出来
+    # 关键点：执行完就退出，不重启
+    restart: "no"
+
+  # 2. Web 服务容器（如果需要持续运行）
+  web-server-s0:
+    image: dingsw-go-md:latest
+    build: .
+    container_name: md-web
+    command: ["./main", "server", "s0"] # 假设你的 Web 启动参数是 server
+    ports:
+      - "8101:8101"
+    volumes:
+      - ./etc/conf.yaml:/root/etc/conf.yaml
+      - /var/www/mystudy:/root/mystudy
+      - ./json:/root/json # 读取扫描生成的 json
     restart: always

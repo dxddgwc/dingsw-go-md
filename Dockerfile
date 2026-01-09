@@ -30,4 +30,4 @@ COPY --from=builder /app/json ./json
 EXPOSE 8080
 
 # 启动程序
-CMD ["./main"]
+CMD ["./main", "server", "s0"]
