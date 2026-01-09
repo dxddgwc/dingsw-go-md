@@ -1,6 +1,6 @@
 Files:
   s0:
-    MdPath: /var/www/mystudy
+    MdPath: /var/www/github.com/mystudy
     JsonPath: ./json/tree0.json
     WebPort: 8101
 Cache:

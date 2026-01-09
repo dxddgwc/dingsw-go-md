@@ -8,7 +8,7 @@ services:
     command: ["./main", "scanner", "all"]
     volumes:
       - ./etc/conf.yaml:/root/etc/conf.yaml
-      - /var/www/mystudy:/root/mystudy
+      - /var/www/github.com/mystudy:/root/mystudy
       - ./json:/root/json # 假设扫描结果存放在 json 目录，需要映射出来
     # 关键点：执行完就退出，不重启
     restart: "no"
@@ -23,6 +23,6 @@ services:
       - "8101:8101"
     volumes:
       - ./etc/conf.yaml:/root/etc/conf.yaml
-      - /var/www/mystudy:/root/mystudy
+      - /var/www/github.com/mystudy:/root/mystudy
       - ./json:/root/json # 读取扫描生成的 json
     restart: always
