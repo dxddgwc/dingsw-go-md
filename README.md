@@ -24,7 +24,7 @@
 
 ### 1. 环境准备
 
-确保已安装 Go 1.20 或更高版本。
+确保已安装 Go 1.24 或更高版本。
 
 ### 2. 安装依赖
 
@@ -91,12 +91,14 @@ go run main.go server s0 // 启动s0服务
 ```
 
 # 构建镜像（如果还没构建）
-docker compose build
+ ### 1. 配置文件 MdPathin 修改为容器内的目录
+ ### 2. mkdir json
+ ### 3. docker compose build
 
 # 运行一次性扫描任务
-docker run --rm \
+### 方法一. docker run --rm \
   -v $(pwd)/etc/conf.yaml:/root/etc/conf.yaml \
   -v /var/www/mystudy:/root/mystudy \
   dingsw-go-md:latest ./main scanner all
 
-  docker compose run --rm scanner-job
+### 方法二. docker compose run --rm scanner-job

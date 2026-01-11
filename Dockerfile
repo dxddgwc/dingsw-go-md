@@ -1,5 +1,5 @@
 # 第一阶段：编译阶段
-FROM golang:1.21-alpine AS builder
+FROM golang:1.24-alpine AS builder
 
 # 设置国内镜像源加速下载
 ENV GOPROXY=https://goproxy.cn,direct

@@ -20,7 +20,7 @@ services:
     container_name: md-web
     command: ["./main", "server", "s0"] # 假设你的 Web 启动参数是 server
     ports:
-      - "8101:8101"
+      - "8101:8080"
     volumes:
       - ./etc/conf.yaml:/root/etc/conf.yaml
       - /var/www/github.com/mystudy:/root/mystudy
