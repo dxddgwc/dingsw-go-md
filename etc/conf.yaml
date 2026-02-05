@@ -4,13 +4,13 @@ Files:
     JsonPath: ./json/tree0.json
     WebPort: 8101
   s1:
-    MdPath: /Users/dxd/www/go_www/dingsw_go_study/note
+    MdPath: /var/www/github.com/ds_study
     JsonPath: ./json/tree1.json
-    WebPort: 8102    
+    WebPort: 8102
 Cache:
     s0:
       addr: 127.0.0.1:6379
-      passwd: 
+      passwd:
       timeout: 3
 RateLimit:
   Retry: 10
